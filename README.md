@@ -5,11 +5,7 @@
 
 The Graphic Balance CLI is a simple program used for discovering, cataloguing, and archiving randomly generated found footage. While a niche use-case, the program could easily be adapted or built upon to support a variety of needs. This was written specifically for use with experimental found-footage documentary. The main functionality is based upon in-camera file naming protocol (IMG 2383, GOPR3483, DSCF9247, 9247MP4 etc.), which when queried to the Youtube Database yields some interesting and unique results. The program has been slightly adapted for use by others, however it has not yet been built into a well-structured CLI program.
 
-![screen shot one](../assets/screen_shot_one.png?raw=true)
-
-![screen shot two](../assets/screen_shot_two.png?raw=true)
-
-![screen shot three](../assets/screen_shot_three.png?raw=true)
+![screen shot one](../assets/gbd.png?raw=true)
 
 ## Tech Stack
 
