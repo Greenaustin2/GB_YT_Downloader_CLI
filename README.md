@@ -39,9 +39,9 @@ Add your Youtube Data API Key to the .env file.
 API_KEY="000000000000000000000000000000000000000"
 ```
 
-## Commands
+## Scripts
 
-### Download
+### download.py
 
 Takes a randomly generated search query (IMG 2383, GOPR3483, DSCF9247, 9247MP4), retrieves a list of results via the Youtube Data Api, selects one of the results at random and downloads the selected result via the Pytube downloader.
 
@@ -81,7 +81,7 @@ Takes a randomly generated search query (IMG 2383, GOPR3483, DSCF9247, 9247MP4),
 python download.py --output_path "/path/to/output/directory" --<other arguments>
 ```
 
-### Channel Download
+### channel_download.py
 
 Takes a directory of downloaded videos, and loops through all files in that directory, downloading the entirety of each video's respective channel
 
@@ -94,7 +94,7 @@ Takes a directory of downloaded videos, and loops through all files in that dire
 python channel_download.py --origin_directory "/path/to/origin" --destination_directory "/path/to/destination/
 ```
 
-### Channel Browser
+### channel_browser.py
 
 Takes a directory of downloaded videos, and loops through all files in that directory, populating each video's respective channel into a web browser
 
@@ -106,7 +106,7 @@ Takes a directory of downloaded videos, and loops through all files in that dire
 python channel_browser.py --origin_directory "/path/to/origin"
 ```
 
-### Channel Length
+### channel_length.py
 
 Returns the length of a specified channels uploaded video catalogue
 
@@ -119,7 +119,7 @@ Returns the length of a specified channels uploaded video catalogue
 python channel_length.py --video_id KzQp8wEx-DE
 ```
 
-### Playlist Download
+### playlist_download.py
 
 Download a Youtube playlist when given a Youtube playlist URL
 
