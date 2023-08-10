@@ -4,6 +4,7 @@
 ## About
 
 The Graphic Balance CLI is a simple program used for discovering, cataloguing, and archiving randomly generated found footage. While a niche use-case, the program could easily be adapted or built upon to support a variety of needs. This was written specifically for use with experimental found-footage documentary. The main functionality is based upon in-camera file naming protocol (IMG 2383, GOPR3483, DSCF9247, 9247MP4 etc.), which when queried to the Youtube Database yields some interesting and unique results. The program has been slightly adapted for use by others, however it has not yet been built into a well-structured CLI program.
+
 ![screen shot one](../assets/screen_shot_one.png?raw=true)
 
 ![screen shot two](../assets/screen_shot_two.png?raw=true)
@@ -12,17 +13,8 @@ The Graphic Balance CLI is a simple program used for discovering, cataloguing, a
 
 ## Tech Stack
 
-**Frontend** - ![react logo](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![react router logo](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![python logo](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue) ![python logo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white) 
 
-**Backend** - ![node.js logo](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![express logo](https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white) ![mongodb logo](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) ![youtube logo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
-
-**Styling** - ![css3 logo](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-, CSS Modules
-
-**Testing** - ![postman logo](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
-
-**Deployment** - [![heroku logo](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
-](https://vercel.com/greenaustin2/graphic-balance-mern)
 
 ## Process
 
