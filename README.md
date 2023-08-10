@@ -1,52 +1,140 @@
 # GRAPHIC BALANCE CLI
-[graphic-balance.com](https://graphic-balance-3bf05d57cb18.herokuapp.com/)
 
 ## About
 
 The Graphic Balance CLI is a simple program used for discovering, cataloguing, and archiving randomly generated found footage. While a niche use-case, the program could easily be adapted or built upon to support a variety of needs. This was written specifically for use with experimental found-footage documentary. The main functionality is based upon in-camera file naming protocol (IMG 2383, GOPR3483, DSCF9247, 9247MP4 etc.), which when queried to the Youtube Database yields some interesting and unique results. The program has been slightly adapted for use by others, however it has not yet been built into a well-structured CLI program.
 
-![screen shot one](../assets/gbd.png?raw=true)
+![screen shot one](./gbd.png?raw=true)
 
 ## Tech Stack
 
 ![python logo](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue) ![python logo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white) 
 
 
-## Process
+## Running Locally
 
-Graphic Balance utilizes the MERN stack, which was an ideal set of frameworks for this concept. When initialized, the program generates a search query consiting of a string ("IMG") and a four digit number between 0000 and 9999 (eg. IMG 2157). IMG is a standard in camera file type, similar to MOV, AVI, DVI, MP4 etc. This query is then used to search Youtube via the Youtube Data API, and when a response is received, a video is chosed from that response at random and presented to the user.
-This was a challenging project, and one that I started far too early in my developement career. However, the challenges it presented exposed me to a wide array of concepts, frameworks, and concepts that I may not have grasped had I followed common MERN stack tutorial projects.
+Clone the project
+```
+git clone https://github.com/Greenaustin2/GB_YT_Downloader_CLI.git
+```
+Go to project directory
+```
+cd GB_YT_Downloader_CLI
+```
+Remove remote origin
+```
+git remote remove origin
+```
+Install packages
+```
+pip install -r requirements.txt
+```
 
-## Key concepts learned:
+Add your Youtube Data API Key to the .env file.
 
-### -State Management
+[How to get your API Key](https://blog.hubspot.com/website/how-to-get-youtube-api-key)
+```
+// .env
 
-Multiple React state management techniques (context, localized, custom hooks) were implemented before arriving at the end product. This conditioned me heavily with the React Lifecycle and how React behaves under the hood
+API_KEY="000000000000000000000000000000000000000"
+```
 
-### -API
+## Commands
 
-For the program to function as I intended, multiple API calls were required due to the Youtube API's seperation of information into seperate API endpoints. The respective API call's response data was then filtered as per certain criteria, and then concatenated into one final object that is then used to communicate to the Youtube Iframe API, as well as send formatted data to the database. This gave me a healthy amount of practice with JSON, async await, and general API fetch, response protocol.
+### Download
 
-### -Database
+Takes a randomly generated search query (IMG 2383, GOPR3483, DSCF9247, 9247MP4), retrieves a list of results via the Youtube Data Api, selects one of the results at random and downloads the selected result via the Pytube downloader.
 
-All basic CRUD operations are utilized throughout this project. Once I was familiar with the structure of the Youtube API responses, the main task was destructuring those objects, extracting the necessary information, and assigning said infoirmation to the respective fields in the database Schema.
+#### Arguments:
 
-## Future Functionality
+(**only --output_path is required**, other default values are in bold and can be overwritten )
 
-### -User Authentification
+**--output_path**: path/to/output/storage/directory
 
-Save and archive videos to a personal account
+**--formats**: formats as list of strings. **["mp4", "wmv", "avi", "mov", "img"]**
 
-Secondary database for video submission staging
+**--video_def**: **any**, high, standard
 
-When a video is submitted to the archive by a user, it will be sent to a staging database. Once approved by an admin, it will be transferred to the permanent public database
+**--max_results**: amount results returned, any int. default **50**
 
-### -Styling
+**--title_chars**: filters length of title of results, default **18**
 
-While all core functionality is enabled, the interface is clunky and buggy
+**--video_duration**: **any**, long (> 20 min), medium (> 4, < 20 min), short (< 4 min)
 
-Optimize for mobile (currently only desktop and large device viewing recommended)
+**--embed**: is video embeddable. **any**, true
 
-### -Youtube Data API Quota
+**--video_limit**: number of videos to be downloaded at random, int. default **100**
 
-Awaiting Google Audited Developer Requests Form to be approved for unlimited API quota
+**--file_size**: maximum file size, int value in bytes. default **1e8**
+
+**--random**: 'yes' will download one video per query, while 'no' will download videos from a single query. default 'yes'
+
+**--published_before**: RFC 3339 time format (1970-01-01T00:00:00Z)
+
+**--published_after**: RFC 3339 time format (1970-01-01T00:00:00Z)
+
+**--order**: **relevance**, date, rating, title, viewCount
+
+**--type**: **video**, channel, playlist
+
+```
+python download.py --output_path "/path/to/output/directory" --<other arguments>
+```
+
+### Channel Download
+
+Takes a directory of downloaded videos, and loops through all files in that directory, downloading the entirety of each video's respective channel
+
+#### Arguments:
+
+**--origin_directory**: the directory with the source files (required)
+
+**--destination_directory**: the directory in which to store the downloaded channels (required)
+```
+python channel_download.py --origin_directory "/path/to/origin" --destination_directory "/path/to/destination/
+```
+
+### Channel Browser
+
+Takes a directory of downloaded videos, and loops through all files in that directory, populating each video's respective channel into a web browser
+
+#### Arguments:
+
+**--origin_directory**: the directory with the source files (required)
+
+```
+python channel_browser.py --origin_directory "/path/to/origin"
+```
+
+### Channel Length
+
+Returns the length of a specified channels uploaded video catalogue
+
+#### Arguments
+**--video_id**: 11 character Youtube video id number of a video from the channel you wish to inspect (required)
+
+(youtube.com/watch?v=**KzQp8wEx-DE**)
+
+```
+python channel_length.py --video_id KzQp8wEx-DE
+```
+
+### Playlist Download
+
+Download a Youtube playlist when given a Youtube playlist URL
+
+#### Arguments
+**--playlist_url**: URL to Youtube playlist (required)
+
+(https://youtube.com/playlist?list=PLvh1qErgmgw3dGtXi7ls5DAZf6YR2Th6A)
+
+```
+python playlist_download.py --playlist_url https://youtube.com/playlist?list=PLvh1qErgmgw3dGtXi7ls5DAZf6YR2Th6A
+```
+
+
+
+
+
+
+
