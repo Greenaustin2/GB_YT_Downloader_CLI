@@ -30,7 +30,11 @@ def query(args):
         return f"{args.format} {args.number}"
     else:
         return f"{args.number}.{args.format}"
+    
 
+
+
+    
 
 def api_request(args):
     """Conducts search as per search criteria. A list of video ID's are compiled in a list, chosen at random"""
